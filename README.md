@@ -17,6 +17,12 @@
 
 + comando para subir o mysql  ------ ``sudo mysql -u root -p`` :heavy_check_mark:
 + comando para criar uma tabela  ------ ``create database nome_da_tabela`` :heavy_check_mark:
++ comando para criar um modelo  ------ 
+``````
+npx sequelize-cli model create --name Pessoas --attributes nome:string,ativo:boolean,em
+ail:string,role:string
+
+``````
 
 
 ## Conceituação
@@ -25,4 +31,14 @@
 
 O ORM (Object-Relational Mapping) funcionam para facilitar o cotidiano de desenvolvimento. Dessa forma o Sequelize suporta diversos bancos de dados relacionais como PostgreSQL, MySQL, SQLite e MSSQL. Com o Sequelize, é possível mapear objetos do JavaScript para tabelas do banco de dados e realizar operações de CRUD (Create, Read, Update, Delete) utilizando apenas JavaScript, sem a necessidade de escrever queries em SQL.
 
+
+## metodo associate
+
+## Normalização de tabela
+
+Alguns jeitos de criar tabelas funcionam melhor do que outros, quando falamos de performance de banco, repetição desnecessária de informações, etc. O processo de otimizar as tabelas de acordo com a necessidade do negócio é o que chamamos de normalização.
+
+## Migração
+
+Acontece quando nós fazemos a migração de dados de uma plataforma para a outra, exemplo disso são trocas de tipos de bancos. A migração em ORM se refere a alterações incrementais que podem ser rastreadas , como se fosse a linha do tempo de commits no guit por exemplo.
 
