@@ -17,9 +17,9 @@
 
 + comando para subir o mysql  ----- ``sudo mysql -u root -p`` 
 + comando para criar uma tabela  -- ``create database nome_da_tabela`` 
-+ data base ----------------------- `show databases;`
 + selecionando database ---------- `use [nome do database];;`
-+ comando migrate  ------ `npx sequelize-cli db: migrate`
++ data base ----------------------- `show databases;`
++ comando migrate  ------ `npx sequelize-cli db:migrate`
 + comando para mostrar as tabelas  ------ `show tables;`
 + comando para descrever tabelas  ------ `describe [nomeDaTabela]`
 + inserindo dados -- `insert into Pessoas (nome, ativo, email, role, createdAt, updatedAt) values ("Carla gomes", 1, "carla@carla.com", "estudante", NOW(), NOW());`
@@ -58,3 +58,26 @@ Acontece quando nós fazemos a migração de dados de uma plataforma para a outr
 Quando usamos ORMs (como o Sequelize) ou outros frameworks (como o Rails se estiver trabalhando com a linguagem Ruby) para trabalhar com os bancos de dados, o comportamento padrão dessas ferramentas é “pluralizar” automaticamente todos os nomes de tabelas. Ou seja, quando criamos a tabela Person (Pessoa em inglês) através do Sequelize, ele vai se conectar ao banco e criar a tabela com o nome de People (Pessoas em inglês). Isso vale para qualquer nome: Name (Nome) se torna Names (Nomes) e por aí vai.
 
 Quando se trabalha com nomes em inglês isso não costuma ser um problema em si, pois a pessoa não precisa se preocupar em avisar ao Sequelize “olha, a tabela que eu chamei de Person você procura no banco como People, ok?”; o próprio ORM já faz essa conversão e sabe exatamente como transformar palavras em inglês do singular para o plural e vice-versa.
+
+## O que são seeders?
+
+Os seeds servem para termos dados iniciais no banco, normalmente dados de exemplo e/ou para teste. Quando você quiser desfazer essa operação para limpar esses dados do banco, pode rodar o comando:
+
+``````
+npx sequelize db:seed:undo
+
+``````
+## Padrão MVC
+
+MVC é um padrão de arquitetura, de desenvolvimento, que é uma sigla: 
+“modelo”, “visão”, e “controlador”: 
+
+``````
+Model 
+View 
+Controller.
+
+``````
+
+<img src="./mvc.png" alt="Modelo MVC" width="100%">
+
