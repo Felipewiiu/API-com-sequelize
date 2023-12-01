@@ -18,9 +18,13 @@
 + comando para subir o mysql  ----- ``sudo mysql -u root -p`` 
 + comando para criar uma tabela  -- ``create database nome_da_tabela`` 
 + data base ----------------------- `show databases;`
++ selecionando database ---------- `use [nome do database];;`
 + comando migrate  ------ `npx sequelize-cli db: migrate`
 + comando para mostrar as tabelas  ------ `show tables;`
 + comando para descrever tabelas  ------ `describe [nomeDaTabela]`
++ inserindo dados -- `insert into Pessoas (nome, ativo, email, role, createdAt, updatedAt) values ("Carla gomes", 1, "carla@carla.com", "estudante", NOW(), NOW());`
++ Criando uma seeder --- `npx sequelize seed:generate --name demo-pessoa`;
+* Comando para enviar para o banco --- `npx sequelize-cli db:seed:all`
 
 
 ``````
