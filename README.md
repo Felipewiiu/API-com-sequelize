@@ -49,9 +49,12 @@ O ORM (Object-Relational Mapping) funcionam para facilitar o cotidiano de desenv
 
 Alguns jeitos de criar tabelas funcionam melhor do que outros, quando falamos de performance de banco, repetição desnecessária de informações, etc. O processo de otimizar as tabelas de acordo com a necessidade do negócio é o que chamamos de normalização.
 
+
 ## Migração
 
-Acontece quando nós fazemos a migração de dados de uma plataforma para a outra, exemplo disso são trocas de tipos de bancos. A migração em ORM se refere a alterações incrementais que podem ser rastreadas , como se fosse a linha do tempo de commits no guit por exemplo.
+A migração em ORM se refere a alterações incrementais que podem ser rastreadas , como se fosse a linha do tempo de commits no guit por exemplo.
+
+Os arquivos de migração são utilizados para comunicar ao banco a estrutura das tabelas, suas colunas e tipos de dados. O Sequelize utiliza estes arquivos somente quando rodamos o comando de migração (por exemplo, npx sequelize-cli db:migrate).
 
 ## Singular e plural
 
