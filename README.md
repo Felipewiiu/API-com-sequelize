@@ -49,6 +49,15 @@ O ORM (Object-Relational Mapping) funcionam para facilitar o cotidiano de desenv
 
 ## metodo associate
 
+Esse método é onde ocorre as relações de cardinalidades, como por exemplo `muitos ára muitos`. Essas relações são feias através dos métodos:
+
++ A ``HasOne()`` Associação
++ A ``BelongsTo()`` Associação
++ A ``HasMany()`` Associação
++ A ``BelongsToMany()`` Associação
+
++ Também vai ser preciso colocar 
+
 ## Normalização de tabela
 
 Alguns jeitos de criar tabelas funcionam melhor do que outros, quando falamos de performance de banco, repetição desnecessária de informações, etc. O processo de otimizar as tabelas de acordo com a necessidade do negócio é o que chamamos de normalização.
@@ -56,14 +65,21 @@ Alguns jeitos de criar tabelas funcionam melhor do que outros, quando falamos de
 
 ## Migração
 
-A migração em ORM se refere a alterações incrementais que podem ser rastreadas , como se fosse a linha do tempo de commits no guit por exemplo.
-
++ A migração em ORM se refere a alterações incrementais que podem ser rastreadas , como se fosse a linha do tempo de commits no guit por exemplo.
 Os arquivos de migração são utilizados para comunicar ao banco a estrutura das tabelas, suas colunas e tipos de dados. O Sequelize utiliza estes arquivos somente quando rodamos o comando de migração (por exemplo, npx sequelize-cli db:migrate).
 
-``````
-Utilizamos o comando de migração no ORM para fazer alterações rastreáveis no banco. As migrações ficam indexadas em sequelizeMeta e podem ser revertidas, mas não é preciso desfazer a migração anterior para fazer uma nova alteração no banco, como adicionar uma coluna. É só rodar um novo comando de migração para adicionar as alterações.
++ Utilizamos o comando de migração no ORM para fazer alterações rastreáveis no banco. As migrações ficam indexadas em sequelizeMeta e podem ser revertidas, mas não é preciso desfazer a migração anterior para fazer uma nova alteração no banco, como adicionar uma coluna. É só rodar um novo comando de migração para adicionar as alterações.
+
++ Precisamos passar manualmente as referencias dos modelos nos arquivos de migrações como no exemplo:
 
 ``````
+turma_id: {
+				allowNull: false,//garante que o campo não será nulo,
+				type: Sequelize.INTEGER,
+				references: {model: 'Turmas', key: 'id'} 
+			},
+``````
+
 
 ## Singular e plural
 
