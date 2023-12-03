@@ -15,16 +15,20 @@
 
 ## Comando para interagir com o banco de dados
 
-+ comando para subir o mysql  ----- ``sudo mysql -u root -p`` 
++ comando para acessar o mysql  ----- ``sudo mysql -u root -p`` 
 + comando para criar uma tabela  -- ``create database nome_da_tabela`` 
 + selecionando database ---------- `use [nome do database];;`
 + data base ----------------------- `show databases;`
-+ comando migrate  ------ `npx sequelize-cli db:migrate`
 + comando para mostrar as tabelas  ------ `show tables;`
 + comando para descrever tabelas  ------ `describe [nomeDaTabela]`
 + inserindo dados -- `insert into Pessoas (nome, ativo, email, role, createdAt, updatedAt) values ("Carla gomes", 1, "carla@carla.com", "estudante", NOW(), NOW());`
+
+## Comando sequelize para interagir com o sequelize
+
++ Criando um modelo(tabela) --- `npx sequelize-cli model:create --name [nomeTabela] --attributes [xx:string]`;
 + Criando uma seeder --- `npx sequelize seed:generate --name demo-pessoa`;
-* Comando para enviar para o banco --- `npx sequelize-cli db:seed:all`
++ Comando para enviar para o banco --- `npx sequelize-cli db:seed:all`
++ comando migrate  ------ `npx sequelize-cli db:migrate`
 
 
 ``````
@@ -56,6 +60,11 @@ A migração em ORM se refere a alterações incrementais que podem ser rastread
 
 Os arquivos de migração são utilizados para comunicar ao banco a estrutura das tabelas, suas colunas e tipos de dados. O Sequelize utiliza estes arquivos somente quando rodamos o comando de migração (por exemplo, npx sequelize-cli db:migrate).
 
+``````
+Utilizamos o comando de migração no ORM para fazer alterações rastreáveis no banco. As migrações ficam indexadas em sequelizeMeta e podem ser revertidas, mas não é preciso desfazer a migração anterior para fazer uma nova alteração no banco, como adicionar uma coluna. É só rodar um novo comando de migração para adicionar as alterações.
+
+``````
+
 ## Singular e plural
 
 Quando usamos ORMs (como o Sequelize) ou outros frameworks (como o Rails se estiver trabalhando com a linguagem Ruby) para trabalhar com os bancos de dados, o comportamento padrão dessas ferramentas é “pluralizar” automaticamente todos os nomes de tabelas. Ou seja, quando criamos a tabela Person (Pessoa em inglês) através do Sequelize, ele vai se conectar ao banco e criar a tabela com o nome de People (Pessoas em inglês). Isso vale para qualquer nome: Name (Nome) se torna Names (Nomes) e por aí vai.
@@ -83,4 +92,12 @@ Controller.
 ``````
 
 <img src="./mvc.png" alt="Modelo MVC" width="100%">
+
+## Criando tabelas através do sequelize
+
++ Para se criar um novo modelo basta usar o comando `npx sequelize-cli model:create --name [nomeTabela] --attributes [xx:string]`, lembrando que quando criamos uma tabela devemos inserir somentes os atributos digamos, naturais da tabela, ignorando as chaves estrangeiras e chave primária, pois são criadas pelo sequeliza de forma automáticas.
+
++ As tabelas precisam ser criadas nas seguintes ordens: Primeiro as entidades com chaves primárias, pelo motivo de que se não for dessa maneira, quando o sequelize rodar as migrações ele abará se perdendo.
+
+
 
