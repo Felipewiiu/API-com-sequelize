@@ -12,16 +12,6 @@ module.exports = {
 			data_inicio: {
 				type: Sequelize.DATEONLY
 			},
-			docente_id: {
-				allowNull: false,//garante que o campo não será nulo,
-				type: Sequelize.INTEGER,
-				references: {model: 'Pessoas', key: 'id'}
-			},
-			nivel_id: {
-				allowNull: false,//garante que o campo não será nulo,
-				type: Sequelize.INTEGER,
-				references: {model: 'Niveis', key: 'id'}
-			},
 			createdAt: {
 				allowNull: false,
 				type: Sequelize.DATE
