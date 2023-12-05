@@ -27,8 +27,9 @@
 
 + Criando um modelo(tabela) --- `npx sequelize-cli model:create --name [nomeTabela] --attributes [xx:string]`;
 + Criando uma seeder --- `npx sequelize seed:generate --name demo-pessoa`;
-+ Comando para enviar para o banco --- `npx sequelize-cli db:seed:all`
-+ comando migrate  ------ `npx sequelize-cli db:migrate`
++ comando para atualizar o banco  ------ `npx sequelize-cli db:migrate`
++ Comando para semear dados no banco --- `npx sequelize-cli db:seed:all`
++ Comando para desfazer tabelas --- `npx sequelize-cli db:seed:all`
 
 
 ``````
@@ -51,10 +52,10 @@ O ORM (Object-Relational Mapping) funcionam para facilitar o cotidiano de desenv
 
 Esse método é onde ocorre as relações de cardinalidades, como por exemplo `muitos ára muitos`. Essas relações são feias através dos métodos:
 
-+ A ``HasOne()`` Associação
-+ A ``BelongsTo()`` Associação
-+ A ``HasMany()`` Associação
-+ A ``BelongsToMany()`` Associação
++ A ``HasOne()`` Associação Um-para-Um
++ A ``BelongsTo()`` associação é usada no lado oposto de onde você usaria uma associação HasOne ou HasMany.
++ A ``HasMany()`` Associação um-para-muitos 
++ A ``BelongsToMany()`` Associação muitos para muitos 
 
 + Também vai ser preciso colocar 
 
@@ -66,7 +67,8 @@ Alguns jeitos de criar tabelas funcionam melhor do que outros, quando falamos de
 ## Migração
 
 + A migração em ORM se refere a alterações incrementais que podem ser rastreadas , como se fosse a linha do tempo de commits no guit por exemplo.
-Os arquivos de migração são utilizados para comunicar ao banco a estrutura das tabelas, suas colunas e tipos de dados. O Sequelize utiliza estes arquivos somente quando rodamos o comando de migração (por exemplo, npx sequelize-cli db:migrate).
+Os arquivos de migração são utilizados para comunicar ao banco a estrutura das tabelas, suas colunas e tipos de dados. O Sequelize utiliza estes arquivos somente quando rodamos o comando de migração 
+(por exemplo, ``npx sequelize-cli db:migrate``).
 
 + Utilizamos o comando de migração no ORM para fazer alterações rastreáveis no banco. As migrações ficam indexadas em sequelizeMeta e podem ser revertidas, mas não é preciso desfazer a migração anterior para fazer uma nova alteração no banco, como adicionar uma coluna. É só rodar um novo comando de migração para adicionar as alterações.
 
@@ -79,6 +81,8 @@ turma_id: {
 				references: {model: 'Turmas', key: 'id'} 
 			},
 ``````
+
++ Toda vez que criamos um modelo é criado um arquivo de migração.
 
 
 ## Singular e plural
