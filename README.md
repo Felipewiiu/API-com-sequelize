@@ -99,6 +99,9 @@ Os seeds servem para termos dados iniciais no banco, normalmente dados de exempl
 npx sequelize db:seed:undo
 
 ``````
+
++ IMPORTANTE: Os seeders precisam, ser criados respeitando as ordens da tabela, ou seja criando os seedrs das tabelas com as chaves primárias primeiro.
+
 ## Padrão MVC
 
 MVC é um padrão de arquitetura, de desenvolvimento, que é uma sigla: 
