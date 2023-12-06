@@ -2,25 +2,15 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface, Sequelize) {
-		await queryInterface.createTable('Matriculas', {
+		await queryInterface.createTable('Niveis', {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER
 			},
-			status: {
+			descr_nivel: {
 				type: Sequelize.STRING
-			},
-			estudante_id: {
-				allowNull: false,//garante que o campo não será nulo,
-				type: Sequelize.INTEGER,
-				references: {model: 'Pessoas', key: 'id'}
-			},
-			turma_id: {
-				allowNull: false,//garante que o campo não será nulo,
-				type: Sequelize.INTEGER,
-				references: {model: 'Turmas', key: 'id'}
 			},
 			createdAt: {
 				allowNull: false,
@@ -33,6 +23,6 @@ module.exports = {
 		});
 	},
 	async down(queryInterface, Sequelize) {
-		await queryInterface.dropTable('Matriculas');
+		await queryInterface.dropTable('Niveis');
 	}
 };

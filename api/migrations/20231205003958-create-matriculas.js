@@ -2,26 +2,27 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface, Sequelize) {
-		await queryInterface.createTable('Turmas', {
+		await queryInterface.createTable('Matriculas', {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER
 			},
-			data_inicio: {
-				type: Sequelize.DATEONLY
+			status: {
+				type: Sequelize.STRING
 			},
-			docente_id: {
-				allowNull: false,//garante que o campo não será nulo,
+			estudante_id: {
+				allowNull: false,
 				type: Sequelize.INTEGER,
-				references: {model: 'Pessoas', key: 'id'}
+				references: { model: 'Pessoas', key: 'id'}
 			},
-			nivel_id: {
-				allowNull: false,//garante que o campo não será nulo,
+			turma_id:{
+				allowNull: false,
 				type: Sequelize.INTEGER,
-				references: {model: 'Niveis', key: 'id'}
+				references: { model: 'Turmas', key: 'id'}
 			},
+
 			createdAt: {
 				allowNull: false,
 				type: Sequelize.DATE
@@ -33,6 +34,6 @@ module.exports = {
 		});
 	},
 	async down(queryInterface, Sequelize) {
-		await queryInterface.dropTable('Turmas');
+		await queryInterface.dropTable('Matriculas');
 	}
 };

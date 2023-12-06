@@ -2,15 +2,25 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface, Sequelize) {
-		await queryInterface.createTable('Niveis', {
+		await queryInterface.createTable('Turmas', {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER
 			},
-			desc_nivel: {
-				type: Sequelize.STRING
+			data_inicio: {
+				type: Sequelize.DATEONLY
+			},
+			docente_id: {
+				allowNull: false,
+				type: Sequelize.INTEGER,
+				references: { model: 'Pessoas', key: 'id'}
+			},
+			nivel_id: {
+				allowNull: false,
+				type: Sequelize.INTEGER,
+				references: { model: 'Niveis', key: 'id'}
 			},
 			createdAt: {
 				allowNull: false,
@@ -23,6 +33,6 @@ module.exports = {
 		});
 	},
 	async down(queryInterface, Sequelize) {
-		await queryInterface.dropTable('Niveis');
+		await queryInterface.dropTable('Turmas');
 	}
 };
