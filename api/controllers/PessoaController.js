@@ -27,7 +27,7 @@ class PessoasController {
 		}
 	}
 
-	static async criaPessoa (req, res) {
+	static async criaPessoa(req, res) {
 		const novaPessoa = req.body;
 
 		try {
@@ -40,16 +40,16 @@ class PessoasController {
 
 	}
 
-	static async atualizaPessoa (req, res){
+	static async atualizaPessoa(req, res) {
 		const { id } = req.params;
 		const novasInfos = req.body;
 		try {
-			await database.Pessoas.update(novasInfos, {where: {id: Number(id)}});
-			const pessoasAtualizada = await database.Pessoas.findOne({ where: { id: Number(id)}});
+			await database.Pessoas.update(novasInfos, { where: { id: Number(id) } });
+			const pessoasAtualizada = await database.Pessoas.findOne({ where: { id: Number(id) } });
 
 			return res.status(200).json(pessoasAtualizada);
 
-			
+
 		} catch (error) {
 			return res.satus(500).json(error.mensage);
 		}
@@ -59,10 +59,27 @@ class PessoasController {
 		const { id } = req.params;
 
 		try {
-			await database.Pessoas.destroy({ where: { id: Number(id)}});
-			return res.status(200).json({ mesage: `O id ${id} foi deletado`});
+			await database.Pessoas.destroy({ where: { id: Number(id) } });
+			return res.status(200).json({ mesage: `O id ${id} foi deletado` });
 		} catch (error) {
 			return res.status(500).json(error.mensage);
+		}
+	}
+
+	static async pegaUmaMatricula(req, res) {
+		const { estudanteId, matriculaId } = req.params;
+
+		try {
+			const umaMatricula = await database.Matriculas.findOne({
+				where: {
+					id: Number(matriculaId),
+					estudanteId: Number(estudanteId)
+				}
+			});
+			return res.status(200).json(umaMatricula);
+
+		} catch (error) {
+			return res.status(500).json(error.message);
 		}
 	}
 }
