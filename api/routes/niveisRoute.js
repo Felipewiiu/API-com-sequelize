@@ -9,6 +9,7 @@ router
 	.get('/niveis', NivelController.pegaTodosOsNiveis)// criação dos andPoits
 	.get('/niveis/:id', NivelController.pegaUmNivel)
 	.post('/niveis', NivelController.criaNivel)
-	.put('/niveis/:id', NivelController.atualizaNivel);
+	.put('/niveis/:id', NivelController.atualizaNivel)
+	.delete('/niveis/:id', NivelController.apagaNivel);
 
 module.exports = router;
