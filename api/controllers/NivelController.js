@@ -50,7 +50,17 @@ class NivelController {
 
 			return res.status(200).json(nivelAtualizado);
 
+		} catch (error) {
+			return res.status(500).json(error.message);
+		}
+	}
 
+	static async apagaNivel(req, res) {
+		try {
+			const { id } = req.params;
+
+			await dataBase.Niveis.destroy({where: {id: Number(id)}});
+			return res.status(200).json({mensagen: `Id ${id} deletado permanentemente`});
 			
 		} catch (error) {
 			return res.status(500).json(error.message);
